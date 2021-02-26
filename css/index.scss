@@ -2,12 +2,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap'); // 'Noto Sans KR', sans-serif;
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap'); // 'Fira Mono', monospace;
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,700&display=swap');
 
 // Breakpoint variable
 $lg: 1200px;
 $md: 770px;
 
+// Color variable
+$white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
+$gray: rgb(239, 239, 239);
+
 // Common class
+.on {
+    display: block !important;
+}
+
+.headerSectionOn {
+    position: relative;
+    background-color: $white;
+}
+
+.logoStyle {
+    font: {
+        family: 'Kanit', sans-serif !important;
+        style: italic;
+    }
+}
+
 .hidden {
     position: absolute;
     left: -9999px;
@@ -39,4 +61,117 @@ button {
     border-radius: 0;
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
+}
+
+// start
+.wrap {
+    header {
+        width: 100%;
+        height: 100px;
+        background-color: $white;
+        // border: 1px solid $gray; 해도 아래 section에 background주면 덮어져서 안보임.
+        section {
+            .inner {
+                width: 1200px;
+                margin: auto;
+                overflow: hidden;
+                h1 {
+                    float: left;
+                    margin-top: 30px;
+                    margin-right: 70px;
+                    a {
+                        font: {
+                            size: 2rem;
+                            weight: bold;
+                        }
+                    }
+                }
+                nav {
+                    float: left;
+                    position: relative;
+                    .gnb { // 메인 메뉴
+                        float: left;
+                        > li {
+                            float: left;
+                            > a {
+                                display: block;
+                                padding: 40px 54px;
+                                text-align: center;
+                                font: {
+                                    size: 1.3rem;
+                                    weight: bold;
+                                }
+                            }
+                            .depth { // 2depth 메뉴
+                                display: none;
+                                > ul {
+                                    height: 280px;
+                                    border-right: 1px solid $gray;
+                                    background-color: $white;
+                                    > li {
+                                        a {
+                                            display: block;
+                                            padding: 20px;
+                                            text-align: center;
+                                            &:hover {
+                                                font-weight: bold;
+                                            }
+                                        }
+                                    }
+                                    &:first-child {
+                                        border-left: 1px solid $gray;
+                                    }
+                                }
+                            }
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+                .util {
+                    float: right;
+                    li {
+                        float: left;
+                        margin-top: 40px;
+                        margin-right: 30px;
+                        position: relative;
+                        .allMenu {
+                            display: block;
+                            width: 50px;
+                            height: 50px;
+                            background-image: url(../img/iconPack.png);
+                            background-position: 50px 0;
+                        }
+                        &:last-child {
+                            margin-top: 25px;
+                            margin-left: 50px;
+                        }
+                        &:first-child:after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            right: -15px;
+                            display: block;
+                            width: 1px;
+                            height: 20px;
+                            background-color: $black;
+                        }
+                    }
+                }
+            }
+        }
+        .line {
+            position: absolute;
+            top: 100px;
+            width: 100%;
+            height: 1px;
+            background-color: $gray;
+        }
+    }
+    main {
+        width: 100%;
+        height: 100vh;
+        background-color: beige;
+    }
 }
