@@ -12,6 +12,7 @@ $md: 770px;
 $white: rgb(255, 255, 255);
 $black: rgb(0, 0, 0);
 $gray: rgb(239, 239, 239);
+$point: rgb(144, 9, 183);
 
 // Common class
 .on {
@@ -101,6 +102,9 @@ button {
                                     size: 1.3rem;
                                     weight: bold;
                                 }
+                                &:hover {
+                                    color: $point;
+                                }
                             }
                             .depth { // 2depth 메뉴
                                 display: none;
@@ -118,7 +122,11 @@ button {
                                             }
                                         }
                                     }
-                                    &:first-child {
+                                }
+                            }
+                            &:first-child {
+                                .depth {
+                                    > ul {
                                         border-left: 1px solid $gray;
                                     }
                                 }

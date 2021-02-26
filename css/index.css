@@ -93,6 +93,10 @@ button {
   font-weight: bold;
 }
 
+.wrap header section .inner nav .gnb > li > a:hover {
+  color: #9009b7;
+}
+
 .wrap header section .inner nav .gnb > li .depth {
   display: none;
 }
@@ -113,7 +117,7 @@ button {
   font-weight: bold;
 }
 
-.wrap header section .inner nav .gnb > li .depth > ul:first-child {
+.wrap header section .inner nav .gnb > li:first-child .depth > ul {
   border-left: 1px solid #efefef;
 }
 
