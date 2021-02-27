@@ -1,6 +1,6 @@
 // 변수
 let header = document.querySelector('header');
-let gnb = header.querySelector('.gnb');
+let nav = header.querySelector('nav');
 
 let main = document.querySelector('main');
 let slide = main.querySelector('.slide');
@@ -11,23 +11,23 @@ let imgWidth = slide.querySelector('img').offsetWidth;
 
 
 // header > .gnb(메인메뉴) 마우스 오버 ---> .depth 노출/비노출
-gnb.addEventListener('mouseover', depthOn);
-gnb.addEventListener('mouseout', depthOff);
+nav.addEventListener('mouseover', depthOn);
+nav.addEventListener('mouseout', depthOff);
 
 
-// .visual > .slide(슬라이더) 클릭 ---> 이미지 돌아가기
+// main > .visual > .slide(슬라이더) 클릭 ---> 이미지 돌아가기
 prevBtn.addEventListener('click', prevImgSlide);
 nextBtn.addEventListener('click', nextImgSlide);
 
 
 // 함수
 function depthOn() {
-    gnb.querySelectorAll('.depth').forEach((item) => item.classList.add('on'));
+    nav.querySelectorAll('.depth').forEach((item) => item.classList.add('on'));
     header.querySelector('section').classList.add('headerSectionOn');
 };
 
 function depthOff() {
-    gnb.querySelectorAll('.depth').forEach((item) => item.classList.remove('on'));
+    nav.querySelectorAll('.depth').forEach((item) => item.classList.remove('on'));
 };
 
 function prevImgSlide() {

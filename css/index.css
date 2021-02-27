@@ -8,6 +8,9 @@
 
 .headerSectionOn {
   position: relative;
+  height: auto;
+  z-index: 1;
+  border-bottom: 1px solid #efefef;
   background-color: white;
 }
 
@@ -51,8 +54,15 @@ button {
 
 .wrap header {
   width: 100%;
-  height: 100px;
+  height: 136px;
   background-color: white;
+}
+
+.wrap header section .top p {
+  padding: 10px;
+  background-color: black;
+  text-align: center;
+  color: white;
 }
 
 .wrap header section .inner {
@@ -99,6 +109,9 @@ button {
 
 .wrap header section .inner nav .gnb > li .depth {
   display: none;
+  position: relative;
+  z-index: 3;
+  border-top: 1px solid #efefef;
 }
 
 .wrap header section .inner nav .gnb > li .depth > ul {
@@ -160,12 +173,13 @@ button {
   background-color: black;
 }
 
-.wrap header .line {
+.wrap header section .line {
   position: absolute;
-  top: 100px;
+  top: 136px;
   width: 100%;
   height: 1px;
   background-color: #efefef;
+  z-index: 2;
 }
 
 .wrap main .visual {

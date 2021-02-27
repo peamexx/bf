@@ -21,6 +21,9 @@ $point: rgb(144, 9, 183);
 
 .headerSectionOn {
     position: relative;
+    height: auto;
+    z-index: 1;
+    border-bottom: 1px solid $gray;
     background-color: $white;
 }
 
@@ -68,10 +71,18 @@ button {
 .wrap {
     header {
         width: 100%;
-        height: 100px;
+        height: 136px;
         background-color: $white;
-        // border: 1px solid $gray; 해도 아래 section에 background주면 덮어져서 안보임.
+        // border 줘도 아래 section에 background주면 덮어져서 안보임.
         section {
+            .top {
+                p {
+                    padding: 10px;
+                    background-color: $black;
+                    text-align: center;
+                    color: $white;
+                }
+            }
             .inner {
                 width: 1200px;
                 margin: auto;
@@ -108,6 +119,9 @@ button {
                             }
                             .depth { // 2depth 메뉴
                                 display: none;
+                                position: relative;
+                                z-index: 3;
+                                border-top: 1px solid $gray;
                                 > ul {
                                     height: 280px;
                                     border-right: 1px solid $gray;
@@ -168,13 +182,14 @@ button {
                     }
                 }
             }
-        }
-        .line {
-            position: absolute;
-            top: 100px;
-            width: 100%;
-            height: 1px;
-            background-color: $gray;
+            .line {
+                position: absolute;
+                top: 136px;
+                width: 100%;
+                height: 1px;
+                background-color: $gray;
+                z-index: 2;
+            }
         }
     }
     main {
