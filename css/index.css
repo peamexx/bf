@@ -141,7 +141,7 @@ button {
   width: 50px;
   height: 50px;
   background-image: url(../img/iconPack.png);
-  background-position: 50px 0;
+  background-position: 150px 0;
 }
 
 .wrap header section .inner .util li:last-child {
@@ -168,9 +168,48 @@ button {
   background-color: #efefef;
 }
 
-.wrap main {
+.wrap main .visual {
   width: 100%;
-  height: 100vh;
-  background-color: beige;
+  height: 500px;
+}
+
+.wrap main .visual .inner {
+  width: 1200px;
+  margin: auto;
+}
+
+.wrap main .visual .inner .slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.wrap main .visual .inner .slide button {
+  position: absolute;
+  top: calc(50% - 80px);
+  z-index: 1;
+}
+
+.wrap main .visual .inner .slide .prevBtn {
+  left: 20px;
+}
+
+.wrap main .visual .inner .slide .nextBtn {
+  right: 20px;
+}
+
+.wrap main .visual .inner .slide .contents {
+  width: 10000px;
+  height: 600px;
+}
+
+.wrap main .visual .inner .slide .contents ul li {
+  float: left;
+  position: relative;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.wrap main .visual .inner .slide .contents ul li img {
+  width: 100%;
 }
 /*# sourceMappingURL=index.css.map */
