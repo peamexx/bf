@@ -226,4 +226,67 @@ button {
 .wrap main .visual .inner .slide .contents ul li img {
   width: 100%;
 }
+
+.wrap main .info {
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+}
+
+.wrap main .info .inner {
+  width: 1200px;
+  padding: 80px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.wrap main .info .inner h3 {
+  float: left;
+  margin-right: 150px;
+  line-height: 1.5;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.wrap main .info .inner .box {
+  float: left;
+  width: 700px;
+}
+
+.wrap main .info .inner .box .category {
+  float: left;
+  width: 45%;
+  position: relative;
+}
+
+.wrap main .info .inner .box .category .title {
+  display: block;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid black;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.wrap main .info .inner .box .category .contents .text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  line-height: 1.2;
+  overflow: hidden;
+}
+
+.wrap main .info .inner .box .category:after {
+  content: '+';
+  display: block;
+  position: absolute;
+  top: -8px;
+  right: 3px;
+  font-size: 2rem;
+}
+
+.wrap main .info .inner .box .category1 {
+  margin-right: 10%;
+}
 /*# sourceMappingURL=index.css.map */

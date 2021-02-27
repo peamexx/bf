@@ -44,6 +44,15 @@ $point: rgb(144, 9, 183);
     text-indent: -9999px;
 }
 
+// Mixin
+@mixin ellipsis($lineCnt) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lineCnt;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    word-wrap:break-word; 
+}
+
 // Common css
 * {
     font-family: 'Noto Sans KR', sans-serif !important;
@@ -226,6 +235,64 @@ button {
                                 }
                             }
                         }
+                    }
+                }
+            }
+        }
+        .info {
+            border-top: 1px solid $gray;
+            border-bottom: 1px solid $gray;
+            .inner {
+                width: 1200px;
+                padding: 80px;
+                margin: auto;
+                overflow: hidden;
+                h3 {
+                    float: left;
+                    margin-right: 150px;
+                    line-height: 1.5;
+                    font: {
+                        size: 1.8rem;
+                        weight: bold;
+                    }
+                }
+                .box {
+                    float: left;
+                    width: 700px;
+                    .category {
+                        float: left;
+                        width: 45%;
+                        position: relative;
+                        .title {
+                            display: block;
+                            margin-bottom: 15px;
+                            padding-bottom: 15px;
+                            border-bottom: 1px solid $black;
+                            font: {
+                                size: 1.2rem;
+                                weight: bold;
+                            }
+                        }
+                        .contents {
+                            .text {
+                                @include ellipsis(3);
+                                line-height: 1.2;
+                                overflow: hidden;
+                                
+                            }
+                        }
+                        &:after {
+                            content: '+';
+                            display: block;
+                            position: absolute;
+                            top: -8px;
+                            right: 3px;
+                            font-size: 2rem;
+
+                        }
+                    }
+                    .category1 {
+                        margin-right: 10%;
                     }
                 }
             }
