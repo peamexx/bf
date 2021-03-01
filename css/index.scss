@@ -12,11 +12,16 @@ $md: 770px;
 $white: rgb(255, 255, 255);
 $black: rgb(0, 0, 0);
 $gray: rgb(239, 239, 239);
+$darkgray: rgb(102, 102, 102);
 $point: rgb(144, 9, 183);
 
 // Common class
 .on {
     display: block !important;
+}
+
+.off {
+    display: none !important;
 }
 
 .headerSectionOn {
@@ -293,6 +298,130 @@ button {
                     }
                     .category1 {
                         margin-right: 10%;
+                    }
+                }
+            }
+        }
+        .quiz {
+            background-color: $gray;
+            .inner {
+                width: 800px;
+                padding: 30px;
+                margin: auto;
+                overflow: hidden;
+                h3 {
+                    margin-bottom: 30px;
+                    text-align: center;
+                    font: {
+                        size: 1.8rem;
+                        weight: bold;
+                    }
+                }
+                .box {
+                    border-radius: 10px;
+                    background-color: $white;
+                    .startArea {
+                        padding: 50px;
+                        img {
+                            display: block;
+                            width: 50%;
+                            margin: auto;
+                        }
+                        .quizStartBtn {
+                            display: block;
+                            margin: auto;
+                            margin-top: 20px;
+                            padding: 15px 30px;
+                            background-color: $point;
+                            color: $white;
+                        }
+                    }
+                    .questionArea {
+                        display: none;
+                        padding: 30px;
+                        .questionTitle {
+                            text-align: center;
+                            color: $darkgray;
+                            font: {
+                                size: 1.1rem;
+                                style: italic;
+                            }
+                        }
+                        .index {
+                            display: block;
+                            width: 50px;
+                            margin: auto;
+                            margin-bottom: 20px;
+                            padding: 5px;
+                            border-radius: 10px;
+                            background-color: #efefef;
+                            text-align: center;
+                            font-size: 0.9rem;
+                        }
+                        .selectArea {
+                            margin: 20px 0;
+                            text-align: center;
+                            .questionBtn {
+                                display: block;
+                                width: 300px;
+                                margin: auto;
+                                padding: 10px;
+                                border: 1px solid $point;
+                                border-radius: 10px;
+                                color: $point;
+                                &:first-child {
+                                    margin-bottom: 10px;
+                                }
+                                &:hover,
+                                &.selected {
+                                    border: 1px solid $point;
+                                    background-color: $point;
+                                    color: $white;
+                                }
+                            }
+                        }
+                        .warning {
+                            display: none;
+                            margin-bottom: 20px;
+                            text-align: center;
+                            color: red;
+                            font-size: 0.9rem;
+                        }
+                        .nextQuestionBtn {
+                            display: block;
+                            margin-top: 20px;
+                            margin: auto;
+                            padding: 10px 30px;
+                            background-color: $black;
+                            color: $white;
+                        }
+                    }
+                    .resultArea {
+                        display: none;
+                        padding: 30px;
+                        overflow: hidden;
+                        p {
+                            text-align: center;
+                            font-size: 1.1rem;
+                        }
+                        strong {
+                            display: block;
+                            margin: 20px;
+                            text-align: center;
+                            font: {
+                                size: 1.5rem;
+                                weight: bold;
+                            }
+                        }
+                        span {
+                            display: block;
+                            text-align: center;
+                        }
+                        img {
+                            display: block;
+                            width: 50%;
+                            margin: auto;
+                        }
                     }
                 }
             }
