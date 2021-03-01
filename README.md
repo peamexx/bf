@@ -38,7 +38,7 @@ ___
 | 메인  | 사용 기능 |
 | ------------- |:-------------:|
 | header      | 1. 빈칸     |
-| main      | 1. 슬라이드<br /> 2. 새로운 소식을 확인하세요     |
+| main      | 1. 슬라이드<br /> 2. 새로운 소식을 확인하세요<br /> 3. 내게 어떤 폰이 맞을까?     |
 | footer      | 1. 빈칸 |
 
 ___
@@ -59,11 +59,80 @@ ___
 - 새로운 소식을 확인하세요 
     - 공지사항, 이벤트 옆 more(+)부분 가상선택자 활용.
     - 내용 텍스트 줄 수에 따라 생략(...) 표시.
-                           
+
+- 내게 어떤 폰이 맞을까?
+    - 4개의 선택지 테스트로 3가지 결과값 출력.
+```
+    // 데이터 형태
+    let questions = [
+    {
+        title: '자고로 스마트폰이란...',
+        choice1: {
+            text: '편하게 국내 스마트폰이 좋아',
+            score: {
+                galaxy: 3,
+                iphone: 0,
+                other: 0
+            }
+        },
+        choice2: {
+            text: '유니크하게 해외 스마트폰이 좋아',
+            score: {
+                galaxy: 0,
+                iphone: 2,
+                other: 1
+            }
+        }
+    },
+    ...]
+```
+
+```
+    // '다음'버튼 클릭 시 다음번 질문제목, 선택지 데이터 노출
+    let keys = [];
+    for(let key in questions[0]) {
+        keys.push(key); // ["title(질문제목)", "choice1(선택지1)", "choice2(선택지2)"]
+    };
+
+    for(let i=1; i<keys.length; i++) {
+        questionBtn.forEach((item) => {
+            item.textContent = questions[indexCount - 1][keys[i]].text;
+            keys.splice(keys[i], 1);
+        });
+    };
+```
+
+```
+    // 키 값에 해당하는 array 생성 ["galaxy", "iphone", "other"]
+    let keys = []; 
+    for(let key in answer[0]) {
+        keys.push(key);
+    };
+
+    // value에 해당하는 array 생성 [2,4,5]
+    let totalScore = [];
+    keys.forEach((item) => {
+        totalScore.push(answer.reduce((prev, curr) => {
+            return prev + curr[item];
+        }, 0));
+    });
+
+    // 합친 array 생성 [[galaxy, 2], [iphone, 4], [other, 5]]
+    let _result = [];
+    for(let i=0; i<keys.length; i++) {
+        totalScore.map((argT) => {
+            _result.push([keys[i], argT]);
+            keys.splice(keys[i], 1);
+        });
+    };
+
+    // 합친 array에서 value값에 따라 내림차순 [[other, 5], [iphone, 4], [galaxy, 2]
+    _result = _result.sort((a, b) => b[1] - a[1]);
+```                           
 
 ___
 
 ### 추가하고 싶은 기능 👀
-- [X] 아이콘 사용 시 접근성 위한 hidden 텍스트 표시
-- [X] svg 코드로 아이콘 사용
-- [X] 한 png파일에서 background-position을 활용하여 아이콘 사용
+- [X] 아이콘 사용 시 접근성 위한 hidden 텍스트 표시.
+- [X] svg 코드로 아이콘 사용.
+- [X] 한 png파일에서 background-position을 활용하여 아이콘 사용.
