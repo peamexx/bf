@@ -165,7 +165,7 @@ function yourPhoneIs() {
     questionArea.classList.add('off');
     resultArea.querySelector('span').classList.add('on');
     resultArea.classList.add('on');
-    resultArea.querySelector('img').setAttribute('src', `/img/${_result[0][0]}01.jpg`);
+    resultArea.querySelector('img').setAttribute('src', `./img/${_result[0][0]}01.jpg`);
     console.log(_result);
     resultPhone.textContent = _result[0][0]; // other
 };
