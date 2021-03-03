@@ -1,11 +1,11 @@
-![logo](http://peamexx.com/img/bflogo.jpg)
+![bf logo img](https://user-images.githubusercontent.com/38338103/109740606-e2b79300-7c0e-11eb-9bc1-ff047410d28e.jpg)
 
 > Javascript를 활용한 스마트폰 정보 사이트.
  
 # 현재 제작중입니다!🧚
 *하단 특징, 사용기술, 상세내용 등은 수시로 업데이트되고있습니다*
 
-![pc version](http://peamexx.com/img/bfview.jpg)
+![bf pc version img](https://user-images.githubusercontent.com/38338103/109740659-f82cbd00-7c0e-11eb-99bc-9786bcafad92.jpg)
 
 [미리보기](https://peamexx.github.io/bf/)
 
