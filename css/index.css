@@ -187,6 +187,29 @@ button {
   z-index: 2;
 }
 
+@media screen and (max-width: 1200px) {
+  .wrap header {
+    height: 100px;
+  }
+  .wrap header section .inner {
+    width: 100%;
+  }
+  .wrap header section .inner h1 {
+    float: none;
+    width: 100%;
+    margin-top: 15px;
+    margin-right: 0;
+    text-align: center;
+  }
+  .wrap header section .inner nav,
+  .wrap header section .inner .util {
+    display: none;
+  }
+  .wrap header section .line {
+    top: 100px;
+  }
+}
+
 .wrap main .visual {
   width: 100%;
   height: 500px;
@@ -433,6 +456,51 @@ button {
   margin: auto;
 }
 
+@media screen and (max-width: 1200px) {
+  .wrap main .visual .inner {
+    width: 100%;
+  }
+  .wrap main .info .inner {
+    width: 100%;
+    padding: 50px 30px;
+  }
+  .wrap main .info .inner h3 {
+    float: none;
+    margin-right: 0;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .wrap main .info .inner .box {
+    float: none;
+    width: 100%;
+  }
+  .wrap main .quiz .inner {
+    width: 100%;
+  }
+  .wrap main .quiz .inner h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .wrap main .info .inner .box .category {
+    float: none;
+    width: 100%;
+  }
+  .wrap main .info .inner .box .category1 {
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+  .wrap main .quiz .inner .box .startArea img {
+    width: 80%;
+  }
+  .wrap main .quiz .inner .box .questionArea .selectArea .questionBtn {
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
 .wrap footer section {
   background-color: black;
 }
@@ -530,5 +598,63 @@ button {
 .wrap footer section .inner .bottom span {
   float: right;
   color: #666666;
+}
+
+@media screen and (max-width: 770px) {
+  .wrap footer section {
+    overflow: hidden;
+  }
+  .wrap footer section .inner {
+    width: 100%;
+    padding: 30px;
+    overflow: hidden;
+  }
+  .wrap footer section .inner .top {
+    margin-bottom: 30px;
+  }
+  .wrap footer section .inner .top ul {
+    float: none;
+    display: table;
+    margin: auto;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+  .wrap footer section .inner .top dl {
+    float: none;
+    text-align: center;
+  }
+  .wrap footer section .inner .top dl dd {
+    margin-bottom: 10px !important;
+  }
+  .wrap footer section .inner .top dl dt, .wrap footer section .inner .top dl dd {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+  .wrap footer section .inner .bottom {
+    float: none;
+  }
+  .wrap footer section .inner .bottom ul {
+    float: none;
+  }
+  .wrap footer section .inner .bottom ul li {
+    float: none;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  .wrap footer section .inner .bottom ul li a:after {
+    display: none;
+  }
+  .wrap footer section .inner .bottom span {
+    float: none;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 1.2rem;
+    font-size: 0.8rem;
+  }
 }
 /*# sourceMappingURL=index.css.map */

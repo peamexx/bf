@@ -207,6 +207,28 @@ button {
                 z-index: 2;
             }
         }
+        @media screen and (max-width: $lg) {
+            height: 100px;
+            section {
+                .inner {
+                    width: 100%;
+                    h1 {
+                        float: none;
+                        width: 100%;
+                        margin-top: 15px;
+                        margin-right: 0;
+                        text-align: center;
+                    }
+                    nav,
+                    .util {
+                        display: none;
+                    }
+                }
+                .line {
+                    top: 100px;
+                }
+            }
+        }
     }
     main {
         .visual {
@@ -428,6 +450,73 @@ button {
                 }
             }
         }
+        @media screen and (max-width: $lg) {
+            .visual {
+                .inner {
+                    width: 100%;
+                }
+            }
+            .info {
+                .inner {
+                    width: 100%;
+                    padding: 50px 30px;
+                    h3 {
+                        float: none;
+                        margin-right: 0;
+                        margin-bottom: 50px;
+                        text-align: center;
+                        font-size: 1.5rem;
+                    }
+                    .box {
+                        float: none;
+                        width: 100%;
+                    }
+                }
+            }
+            .quiz {
+                .inner {
+                    width: 100%;
+                    h3 {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: $md) {
+            .info {
+                .inner {
+                    .box {
+                        .category {
+                            float: none;
+                            width: 100%;
+                        }
+                        .category1 {
+                            margin-right: 0;
+                            margin-bottom: 50px;
+                        }
+                    }
+                }
+            }
+            .quiz {
+                .inner {
+                    .box {
+                        .startArea {
+                            img {
+                                width: 80%;
+                            }
+                        }
+                        .questionArea {
+                            .selectArea {
+                                .questionBtn {
+                                    width: 100%;
+                                    padding: 10px 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     footer {
         section {
@@ -520,6 +609,65 @@ button {
                     span {
                         float: right;
                         color: $darkgray;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: $md) {
+            section {
+                overflow: hidden;
+                .inner {
+                    width: 100%;
+                    padding: 30px;
+                    overflow: hidden;
+                    .top {
+                        margin-bottom: 30px;
+                        ul {
+                            float: none;
+                            display: table;
+                            margin: auto;
+                            margin-bottom: 40px;
+                            overflow: hidden;
+                        }
+                        dl {
+                            float: none;
+                            text-align: center;
+                            dd {
+                                margin-bottom: 10px !important;
+                            }
+                            dt, dd {
+                                float: none;
+                                width: 100%;
+                                margin-right: 0;
+                                margin-bottom: 5px;
+                            }
+                        }
+                    }
+                    .bottom {
+                        float: none;
+                        ul {
+                            float: none;
+                            li {
+                                float: none;
+                                margin-bottom: 5px;
+                                text-align: center;
+                                font-size: 0.9rem;
+                                a {
+                                    &:after {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                        span {
+                            float: none;
+                            display: block;
+                            margin: auto;
+                            margin-top: 20px;
+                            text-align: center;
+                            line-height: 1.2rem;
+                            font-size: 0.8rem;
+                        }
                     }
                 }
             }
