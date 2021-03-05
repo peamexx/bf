@@ -3,11 +3,11 @@ let header = document.querySelector('header');
 let nav = header.querySelector('nav');
 
 let main = document.querySelector('main');
-let slide = main.querySelector('.slide');
-let prevBtn = slide.querySelector('.prevBtn');
-let nextBtn = slide.querySelector('.nextBtn');
-let slideLi = slide.querySelectorAll('li');
-let imgWidth = slide.querySelector('img').offsetWidth;
+let slider = main.querySelector('.slider');
+let prevBtn = slider.querySelector('.prevBtn');
+let nextBtn = slider.querySelector('.nextBtn');
+let slide = slider.querySelectorAll('.slide');
+let imgWidth = slide[0].querySelector('img').offsetWidth;
 
 let quiz = document.querySelector('.quiz');
 let startArea = quiz.querySelector('.startArea');
@@ -28,7 +28,7 @@ let answer = [];
 nav.addEventListener('mouseover', depthOn);
 nav.addEventListener('mouseout', depthOff);
 
-// main > .visual > .slide(슬라이더) 클릭 ---> 이미지 돌아가기
+// main > .visual > .slider 클릭 ---> 이미지 돌아가기
 prevBtn.addEventListener('click', prevImgSlide);
 nextBtn.addEventListener('click', nextImgSlide);
 
@@ -53,10 +53,10 @@ function depthOff() {
 
 
 function prevImgSlide() {
-    if(slideLi.length === 1 || parseFloat(getComputedStyle(slideLi[0]).left) === 0) {
-        return; // 슬라이드 개수가 1개거나, left가 0일 때 제외
-    } else if(slideLi.length > 1) {
-        slideLi.forEach((item) => {
+    if(slide.length === 1 || parseFloat(getComputedStyle(slide[0]).left) === 0) {
+        return; // 슬라이드 개수가 1개거나, left가 0일 때(첫페이지 일때) 제외
+    } else if(slide.length > 1) {
+        slide.forEach((item) => {
             let leftNum = parseFloat(getComputedStyle(item).left);
 
             item.style.left = leftNum + imgWidth + 'px';
@@ -65,13 +65,13 @@ function prevImgSlide() {
 };
 
 function nextImgSlide() {
-    if(slideLi.length === 1) {
+    if(slide.length === 1) {
         return;
-    } else if(slideLi.length > 1) {
-        slideLi.forEach((item) => {
+    } else if(slide.length > 1) {
+        slide.forEach((item) => {
             let leftNum = parseFloat(getComputedStyle(item).left);
 
-            if(Math.abs(leftNum) === (slideLi.length - 1) * imgWidth) { // 제일 마지막 슬라이드일 때
+            if(Math.abs(leftNum) === (slide.length - 1) * imgWidth) { // 제일 마지막 슬라이드일 때
                 item.style.left = 0; // 처음으로 돌아가기
             } else {
                 item.style.left = leftNum - imgWidth + 'px';

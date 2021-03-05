@@ -61,6 +61,7 @@ button {
   width: 100%;
   height: 136px;
   background-color: white;
+  z-index: 9;
 }
 
 .wrap header section .top p {
@@ -213,45 +214,56 @@ button {
 .wrap main .visual {
   width: 100%;
   height: 500px;
+  overflow: hidden;
 }
 
 .wrap main .visual .inner {
   width: 1200px;
+  height: 100%;
   margin: auto;
 }
 
-.wrap main .visual .inner .slide {
+.wrap main .visual .inner .slider {
+  height: 100%;
   position: relative;
+  -webkit-transition-duration: 0.8s;
+          transition-duration: 0.8s;
   overflow: hidden;
 }
 
-.wrap main .visual .inner .slide button {
+.wrap main .visual .inner .slider button {
   position: absolute;
-  top: calc(50% - 80px);
+  top: calc(50% - 39px);
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
 
-.wrap main .visual .inner .slide .prevBtn {
-  left: 20px;
+.wrap main .visual .inner .slider button svg {
+  width: 60px;
+  height: 80px;
 }
 
-.wrap main .visual .inner .slide .nextBtn {
-  right: 20px;
+.wrap main .visual .inner .slider .prevBtn {
+  left: calc(50% - 600px);
 }
 
-.wrap main .visual .inner .slide .contents {
-  width: 10000px;
-  height: 600px;
+.wrap main .visual .inner .slider .nextBtn {
+  right: calc(50% - 600px);
 }
 
-.wrap main .visual .inner .slide .contents ul li {
+.wrap main .visual .inner .slider .contents {
+  width: 500%;
+}
+
+.wrap main .visual .inner .slider .contents .slide {
   float: left;
   position: relative;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
-.wrap main .visual .inner .slide .contents ul li img {
+.wrap main .visual .inner .slider .contents .slide img {
   width: 100%;
 }
 
@@ -349,6 +361,15 @@ button {
   display: block;
   width: 50%;
   margin: auto;
+}
+
+.wrap main .quiz .inner .box .startArea p {
+  margin: 10px 0;
+  text-align: center;
+  line-height: 1.5;
+  color: #666666;
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .wrap main .quiz .inner .box .startArea .quizStartBtn {
@@ -457,8 +478,17 @@ button {
 }
 
 @media screen and (max-width: 1200px) {
+  .wrap main .visual {
+    height: 300px;
+  }
   .wrap main .visual .inner {
     width: 100%;
+  }
+  .wrap main .visual .inner .slider .prevBtn {
+    left: 2%;
+  }
+  .wrap main .visual .inner .slider .nextBtn {
+    right: 2%;
   }
   .wrap main .info .inner {
     width: 100%;
@@ -477,6 +507,7 @@ button {
   }
   .wrap main .quiz .inner {
     width: 100%;
+    padding: 50px 30px;
   }
   .wrap main .quiz .inner h3 {
     font-size: 1.5rem;
@@ -484,6 +515,10 @@ button {
 }
 
 @media screen and (max-width: 770px) {
+  .wrap main .visual .inner .slider button svg {
+    width: 30px;
+    height: 40px;
+  }
   .wrap main .info .inner .box .category {
     float: none;
     width: 100%;
@@ -600,7 +635,7 @@ button {
   color: #666666;
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 1200px) {
   .wrap footer section {
     overflow: hidden;
   }
