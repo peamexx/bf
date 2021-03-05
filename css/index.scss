@@ -14,6 +14,7 @@ $black: rgb(0, 0, 0);
 $gray: rgb(239, 239, 239);
 $darkgray: rgb(102, 102, 102);
 $point: rgb(144, 9, 183);
+$lightpoint: rgb(202, 82, 240);
 
 // Common class
 .on {
@@ -423,6 +424,102 @@ button {
                             width: 50%;
                             margin: auto;
                         }
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        section {
+            background-color: $black;
+            .inner {
+                width: 1200px;
+                margin: auto;
+                padding: 70px;
+                .top {
+                    margin-bottom: 50px;
+                    overflow: hidden;
+                    ul {
+                        float: left;
+                        li {
+                            float: left;
+                            a {
+                                position: relative;
+                                margin-right: 20px;
+                                color: $white;
+                                &:after {
+                                    content: '';
+                                    display: block;
+                                    width: 1px;
+                                    height: 80%;
+                                    background-color: $darkgray;
+                                    position: absolute;
+                                    top: 4px;
+                                    right: -12px;
+                                }
+                            }
+                            &:last-child {
+                                a {
+                                    &:after {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    dl {
+                        float: right;
+                        text-align: right;
+                        color: $white;
+                        font-size: 1.2rem;
+                        dt {
+                            float: left;
+                            margin-right: 5px;
+                            margin-bottom: 5px;
+                        }
+                        dd {
+                            float: left;
+                            margin-right: 15px;
+                            color: $lightpoint;
+                            font: {
+                                size: 1.3rem;
+                                weight: bold;
+                            }
+                        }
+                    }
+                }
+                .bottom {
+                    ul {
+                        float: left;
+                        li {
+                            float: left;
+                            a {
+                                position: relative;
+                                margin-right: 20px;
+                                color: $gray;
+                                &:after {
+                                    content: '';
+                                    display: block;
+                                    width: 1px;
+                                    height: 80%;
+                                    background-color: $darkgray;
+                                    position: absolute;
+                                    top: 4px;
+                                    right: -12px;
+                                }
+                            }
+                            &:last-child {
+                                a {
+                                    &:after {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    span {
+                        float: right;
+                        color: $darkgray;
                     }
                 }
             }

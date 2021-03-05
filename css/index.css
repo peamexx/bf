@@ -432,4 +432,103 @@ button {
   width: 50%;
   margin: auto;
 }
+
+.wrap footer section {
+  background-color: black;
+}
+
+.wrap footer section .inner {
+  width: 1200px;
+  margin: auto;
+  padding: 70px;
+}
+
+.wrap footer section .inner .top {
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.wrap footer section .inner .top ul {
+  float: left;
+}
+
+.wrap footer section .inner .top ul li {
+  float: left;
+}
+
+.wrap footer section .inner .top ul li a {
+  position: relative;
+  margin-right: 20px;
+  color: white;
+}
+
+.wrap footer section .inner .top ul li a:after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 80%;
+  background-color: #666666;
+  position: absolute;
+  top: 4px;
+  right: -12px;
+}
+
+.wrap footer section .inner .top ul li:last-child a:after {
+  display: none;
+}
+
+.wrap footer section .inner .top dl {
+  float: right;
+  text-align: right;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.wrap footer section .inner .top dl dt {
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.wrap footer section .inner .top dl dd {
+  float: left;
+  margin-right: 15px;
+  color: #ca52f0;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.wrap footer section .inner .bottom ul {
+  float: left;
+}
+
+.wrap footer section .inner .bottom ul li {
+  float: left;
+}
+
+.wrap footer section .inner .bottom ul li a {
+  position: relative;
+  margin-right: 20px;
+  color: #efefef;
+}
+
+.wrap footer section .inner .bottom ul li a:after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 80%;
+  background-color: #666666;
+  position: absolute;
+  top: 4px;
+  right: -12px;
+}
+
+.wrap footer section .inner .bottom ul li:last-child a:after {
+  display: none;
+}
+
+.wrap footer section .inner .bottom span {
+  float: right;
+  color: #666666;
+}
 /*# sourceMappingURL=index.css.map */
