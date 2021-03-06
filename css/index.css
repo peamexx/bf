@@ -491,20 +491,20 @@ button {
   font-weight: bold;
 }
 
-.wrap main .plan .inner .box {
+.wrap main .plan .inner .boxs .box {
   width: 780px;
   margin: auto;
   margin-top: 50px;
 }
 
-.wrap main .plan .inner .box .item p {
+.wrap main .plan .inner .boxs .box .item p {
   position: relative;
   margin-bottom: 20px;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.wrap main .plan .inner .box .item p .answer {
+.wrap main .plan .inner .boxs .box .item p .answer {
   display: inline-block;
   position: relative;
   width: 50px;
@@ -512,34 +512,34 @@ button {
   border-bottom: 2px solid black;
 }
 
-.wrap main .plan .inner .box .item .area {
+.wrap main .plan .inner .boxs .box .item .area {
   position: relative;
   margin-left: 20px;
   margin-right: 10px;
   font-size: 1.2rem;
 }
 
-.wrap main .plan .inner .box .item .area input[type="radio"] {
+.wrap main .plan .inner .boxs .box .item .area input[type="radio"] {
   margin-right: 5px;
   padding: 10px;
   border: 1px solid black;
   color: white;
 }
 
-.wrap main .plan .inner .box .item .area input[type="radio"]:checked {
+.wrap main .plan .inner .boxs .box .item .area input[type="radio"]:checked {
   background-color: #9009b7;
 }
 
-.wrap main .plan .inner .box .item .area input[type="radio"]:focus {
+.wrap main .plan .inner .boxs .box .item .area input[type="radio"]:focus {
   outline: none;
 }
 
-.wrap main .plan .inner .box .item .area label {
+.wrap main .plan .inner .boxs .box .item .area label {
   position: relative;
   top: -4px;
 }
 
-.wrap main .plan .inner .box .item .area input[type="text"] {
+.wrap main .plan .inner .boxs .box .item .area input[type="text"] {
   position: relative;
   top: -4px;
   width: 60px;
@@ -548,25 +548,25 @@ button {
   font-size: 1.2rem;
 }
 
-.wrap main .plan .inner .box .item .area input[type="text"]:focus {
+.wrap main .plan .inner .boxs .box .item .area input[type="text"]:focus {
   outline: none;
 }
 
-.wrap main .plan .inner .box .item .area ul {
+.wrap main .plan .inner .boxs .box .item .area ul {
   display: inline-block;
   position: absolute;
   top: -6px;
   right: -65px;
 }
 
-.wrap main .plan .inner .box .item .area ul li {
+.wrap main .plan .inner .boxs .box .item .area ul li {
   display: none;
   padding: 9px;
   padding-right: 30px;
   cursor: pointer;
 }
 
-.wrap main .plan .inner .box .item .area ul li:first-child:after {
+.wrap main .plan .inner .boxs .box .item .area ul li:first-child:after {
   content: '▼';
   display: block;
   position: absolute;
@@ -575,7 +575,61 @@ button {
   font-size: 0.8rem;
 }
 
-.wrap main .plan .inner button {
+.wrap main .plan .inner .boxs button {
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  padding: 15px 30px;
+  background-color: #9009b7;
+  color: white;
+}
+
+.wrap main .plan .inner .result {
+  display: none;
+  padding: 30px;
+}
+
+.wrap main .plan .inner .result p {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.wrap main .plan .inner .result strong {
+  display: block;
+  text-align: center;
+  color: #9009b7;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.wrap main .plan .inner .result table {
+  margin: auto;
+  margin-top: 30px;
+  font-size: 1.2rem;
+}
+
+.wrap main .plan .inner .result table tr {
+  border: 1px solid black;
+}
+
+.wrap main .plan .inner .result table tr th {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.wrap main .plan .inner .result table tr td {
+  padding: 10px 20px;
+}
+
+.wrap main .plan .inner .result table tr th:nth-child(1),
+.wrap main .plan .inner .result table tr th:nth-child(2),
+.wrap main .plan .inner .result table tr td:nth-child(1),
+.wrap main .plan .inner .result table tr td:nth-child(2) {
+  border-right: 1px solid black;
+}
+
+.wrap main .plan .inner .result .reset {
   display: block;
   margin: auto;
   margin-top: 50px;

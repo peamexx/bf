@@ -192,7 +192,9 @@ function yourPhoneIs() {
 
 // Obejct
 let slideColor = ['rgb(0, 0, 0)', 'rgb(249, 205, 57)', 'rgb(255, 255, 255)'];
-let questions = [{
+
+let questions = [
+    {
         title: '자고로 스마트폰이란...',
         choice1: {
             text: '편하게 국내 스마트폰이 좋아',

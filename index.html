@@ -166,29 +166,30 @@
             <section class="plan">
                 <div class="inner">
                     <h3>내게 딱 맞는 요금제를 추천해드려요</h3>
-                    <div class="box">
-                        <div class="item">
-                            <p>1. 데이터는 <span class="answer"></span>(이)면 좋겠어요</p>
-                            <span class="area">
-                                <input type="radio" name="radio1"><label for="">무제한</label>
-                            </span>
-                            <span class="area">
-                                <input type="radio" name="radio1"><label for="">보통수준(6GB~2GB)</label>
-                            </span>
-                            <span class="area">
-                                <input type="radio" name="radio1"><label for="">적은수준(2GB 이하)</label>
-                            </span>
-                            <span class="area">
-                                <input type="radio" name="radio1">
-                                <input type="text">
-                                <ul>
-                                    <li class="on">GB</li>
-                                    <li>MB</li>
-                                </ul>
-                            </span>
+                    <div class="boxs">
+                        <div class="box">
+                            <div class="item">
+                                <p>1. 데이터는 <span class="answer"></span>(이)면 좋겠어요</p>
+                                <span class="area">
+                                    <input type="radio" name="radio1"><label for="">무제한</label>
+                                </span>
+                                <span class="area">
+                                    <input type="radio" name="radio1"><label for="">보통수준(6GB~2GB)</label>
+                                </span>
+                                <span class="area">
+                                    <input type="radio" name="radio1"><label for="">적은수준(2GB 이하)</label>
+                                </span>
+                                <span class="area">
+                                    <input type="radio" name="radio1">
+                                    <input type="text">
+                                    <ul>
+                                        <li class="on">GB</li>
+                                        <li>MB</li>
+                                    </ul>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="box">
+                        <div class="box">
                             <div class="item">
                                 <p>2. 통화는 <span class="answer"></span>(이)면 충분해요</p>
                                 <span class="area">
@@ -206,8 +207,26 @@
                                     <label for="">분</label>
                                 </span>
                             </div>
+                        </div>
+                        <button>요금제 확인하기</button>
                     </div>
-                    <button>요금제 확인하기</button>
+                    <div class="result">
+                        <p>추천 요금제는 바로</p>
+                        <strong>LTE 데이터</strong>
+                        <table>
+                            <tr>
+                                <th>데이터</th>
+                                <th>통화</th>
+                                <th>가격</th>
+                            </tr>
+                            <tr>
+                                <td>무제한</td>
+                                <td>무제한</td>
+                                <td>77000</td>
+                            </tr>
+                        </table>
+                        <button class="reset">테스트 다시하기</button>
+                    </div>
                 </div>
             </section>
         </main>
