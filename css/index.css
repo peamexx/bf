@@ -28,6 +28,14 @@
   z-index: 3;
 }
 
+.warning {
+  display: none;
+  margin-bottom: 20px;
+  text-align: center;
+  color: red;
+  font-size: 0.9rem;
+}
+
 .hidden {
   position: absolute;
   left: -9999px;
@@ -431,14 +439,6 @@ button {
   color: white;
 }
 
-.wrap main .quiz .inner .box .questionArea .warning {
-  display: none;
-  margin-bottom: 20px;
-  text-align: center;
-  color: red;
-  font-size: 0.9rem;
-}
-
 .wrap main .quiz .inner .box .questionArea .nextQuestionBtn {
   display: block;
   margin-top: 20px;
@@ -492,9 +492,10 @@ button {
 }
 
 .wrap main .plan .inner .boxs .box {
-  width: 780px;
+  width: 630px;
   margin: auto;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .wrap main .plan .inner .boxs .box .item p {
@@ -578,7 +579,6 @@ button {
 .wrap main .plan .inner .boxs button {
   display: block;
   margin: auto;
-  margin-top: 50px;
   padding: 15px 30px;
   background-color: #9009b7;
   color: white;
@@ -598,6 +598,8 @@ button {
 .wrap main .plan .inner .result strong {
   display: block;
   text-align: center;
+  line-height: 1.5;
+  text-decoration: underline;
   color: #9009b7;
   font-size: 1.8rem;
   font-weight: bold;
@@ -611,6 +613,7 @@ button {
 
 .wrap main .plan .inner .result table tr {
   border: 1px solid black;
+  text-align: center;
 }
 
 .wrap main .plan .inner .result table tr th {
@@ -624,12 +627,14 @@ button {
 
 .wrap main .plan .inner .result table tr th:nth-child(1),
 .wrap main .plan .inner .result table tr th:nth-child(2),
+.wrap main .plan .inner .result table tr th:nth-child(3),
 .wrap main .plan .inner .result table tr td:nth-child(1),
-.wrap main .plan .inner .result table tr td:nth-child(2) {
+.wrap main .plan .inner .result table tr td:nth-child(2),
+.wrap main .plan .inner .result table tr td:nth-child(3) {
   border-right: 1px solid black;
 }
 
-.wrap main .plan .inner .result .reset {
+.wrap main .plan .inner .result .planResetBtn {
   display: block;
   margin: auto;
   margin-top: 50px;

@@ -44,6 +44,14 @@ $lightpoint: rgb(202, 82, 240);
     z-index: 3;
 }
 
+.warning {
+    display: none;
+    margin-bottom: 20px;
+    text-align: center;
+    color: red;
+    font-size: 0.9rem;
+}
+
 .hidden {
     position: absolute;
     left: -9999px;
@@ -423,13 +431,6 @@ button {
                                 }
                             }
                         }
-                        .warning {
-                            display: none;
-                            margin-bottom: 20px;
-                            text-align: center;
-                            color: red;
-                            font-size: 0.9rem;
-                        }
                         .nextQuestionBtn {
                             display: block;
                             margin-top: 20px;
@@ -484,9 +485,10 @@ button {
                 }
                 .boxs {
                     .box {
-                        width: 780px;
+                        width: 630px;
                         margin: auto;
                         margin-top: 50px;
+                        margin-bottom: 50px;
                         .item {
                             p {
                                 position: relative;
@@ -561,7 +563,6 @@ button {
                     button {
                         display: block;
                         margin: auto;
-                        margin-top: 50px;
                         padding: 15px 30px;
                         background-color: $point;
                         color: $white;
@@ -578,6 +579,8 @@ button {
                     strong {
                         display: block;
                         text-align: center;
+                        line-height: 1.5;
+                        text-decoration: underline;
                         color: $point;
                         font: {
                             size: 1.8rem;
@@ -590,6 +593,7 @@ button {
                         font-size: 1.2rem;
                         tr {
                             border: 1px solid $black;
+                            text-align: center;
                             th {
                                 padding: 10px 20px;
                                 font-weight: bold;
@@ -599,13 +603,15 @@ button {
                             }
                             th:nth-child(1),
                             th:nth-child(2),
+                            th:nth-child(3),
                             td:nth-child(1),
-                            td:nth-child(2), {
+                            td:nth-child(2),
+                            td:nth-child(3), {
                                 border-right: 1px solid $black;
                             }
                         }
                     }
-                    .reset {
+                    .planResetBtn {
                         display: block;
                         margin: auto;
                         margin-top: 50px;

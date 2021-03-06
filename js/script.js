@@ -18,15 +18,25 @@ let startArea = quiz.querySelector('.startArea');
 let quizStartBtn = quiz.querySelector('.quizStartBtn');
 let questionArea = quiz.querySelector('.questionArea');
 let questionTitle = quiz.querySelector('.questionTitle');
-let questionBtn = quiz.querySelectorAll('.questionBtn');
+let questionBtn = quiz.querySelectorAll('.questionBtn'); // All이라 붙이기
 let index = quiz.querySelector('.index');
 let nextQuestionBtn = quiz.querySelector('.nextQuestionBtn');
-let warning = quiz.querySelector('.warning');
+let warning = quiz.querySelector('.warning'); // 앞에 quiz워닝 붙여야함
 let resultArea = quiz.querySelector('.resultArea');
 let resultPhone = quiz.querySelector('.resultPhone');
 let indexCount = 1;
 let answer = [];
 
+let plan = document.querySelector('.plan');
+let planSearchBtn = plan.querySelector('.planSearchBtn');
+let planWarning = plan.querySelector('.warning');
+let boxs = plan.querySelector('.boxs');
+let boxAll = plan.querySelectorAll('.box');
+let planResultArea = plan.querySelector('.result');
+let planResetBtn = plan.querySelector('.planResetBtn');
+let recommendPlan = plan.querySelector('.recommendPlan');
+let dataValue = [];
+let callValue = [];
 
 
 // header > .gnb(메인메뉴) 마우스 오버 ---> .depth 노출/비노출
@@ -40,13 +50,17 @@ nextBtn.addEventListener('click', nextImgSlide);
 // .main > .slider 반응형 처리
 window.addEventListener('resize', sliderResize);
 
-// main > .quiz > .quizStartBtn(테스트 시작) 클릭 ---> 퀴즈 시작
+// .main > .quiz > .quizStartBtn(테스트 시작) 클릭 ---> 퀴즈 시작
 quizStartBtn.addEventListener('click', quizStart);
-// main > .quiz > .questionBtn(선택지) 클릭 ---> 클래스 추가
+// .main > .quiz > .questionBtn(선택지) 클릭 ---> 클래스 추가
 questionBtn.forEach((item) => item.addEventListener('click', questionBtnSelected));
-// main > .quiz > .nextQuestionBtn(다음) 클릭 ---> 다음 퀴즈 노출
+// .main > .quiz > .nextQuestionBtn(다음) 클릭 ---> 다음 퀴즈 노출
 nextQuestionBtn.addEventListener('click', nextQuestionClicked);
 
+// .main > .plan > .planSearchBtn(요금제 확인하기) ---> 결과값 도출
+planSearchBtn.addEventListener('click', planSearch);
+// .main > .plan > .planResetBtn(테스트 다시하기) ---> 다시 시작
+planResetBtn.addEventListener('click', planReset);
 
 
 // 함수
@@ -188,11 +202,91 @@ function yourPhoneIs() {
     resultPhone.textContent = _result[0][0]; // other
 };
 
+function planSearch() {
+    let count = 0;
+
+    boxAll.forEach((item, index) => { // 선택지 2개 선택했는지 체크
+        let radioInputAll = item.querySelectorAll('input[type="radio"]');
+
+        radioInputAll.forEach((item) => {
+            if(item.checked) {
+                count++;
+                if(index === 0) { // 첫번째 질문에 해당하면 dataValue에 value 넣기
+                    dataValue.push(item.value);
+                } else { // 두번째 질문에 해당하면 callValue에 value 넣기
+                    callValue.push(item.value);
+                }
+            };
+        });
+    });
+
+    if(count < 2) { // 선택지 빼먹은게 있을 때
+        planWarning.classList.add('on');
+        planWarning.textContent = '각 문항당 선택지를 하나씩 골라주세요';            
+    } else { // 선택지 2개 이상 선택했을 때
+        planWarning.classList.remove('on');
+        calculateResult();
+    };
+};
+
+function calculateResult() {
+    let calculateResult = plansObj.filter((item) => {
+        if(dataValue == 10000 || callValue == 10000) { // 무제한 골랐을 때
+            return item.data >= dataValue && item.call >= callValue;
+        } else if(dataValue == 6000 || callValue == 300) { // 보통 골랐을 때
+            return item.data >= 2000 && item.data < 10000 && item.call >= 100 && item.call < 10000; // 무제한 요금제는 제외
+        } else { // 적은거 골랐을 때
+            return item.data < dataValue && item.call < callValue;
+        }
+    });
+
+    showPlanResult(calculateResult);
+};
+
+function showPlanResult(arg) {
+    boxs.classList.add('off');
+    planResultArea.classList.add('on');
+
+    arg.forEach((item) => {
+        recommendPlan.innerHTML += item.title + '<br>';
+
+        let tr = document.createElement('tr');
+        tr.classList.add('add');
+        let td1 = document.createElement('td');
+        td1.textContent = item.title;
+        let td2 = document.createElement('td');
+        td2.textContent = item.data.toLocaleString(); // gb로 나타내기
+        let td3 = document.createElement('td');
+        td3.textContent = item.call.toLocaleString();
+        let td4 = document.createElement('td');
+        td4.textContent = item.price.toLocaleString();
+        tr.append(td1);
+        tr.append(td2);
+        tr.append(td3);
+        tr.append(td4);
+
+        plan.querySelector('tbody').append(tr);
+    });
+};
+
+function planReset() {
+    boxs.classList.remove('off');
+    planResultArea.classList.remove('on');
+    recommendPlan.innerHTML = '';
+    plan.querySelectorAll('.add').forEach((item) => {
+        item.remove();
+    });
+
+    dataValue = [];
+    callValue = [];
+};
+
 
 
 // Obejct
-let slideColor = ['rgb(0, 0, 0)', 'rgb(249, 205, 57)', 'rgb(255, 255, 255)'];
+let slideColor = ['rgb(0, 0, 0)', 'rgb(249, 205, 57)', 'rgb(255, 255, 255)']; //obj뒤에 붙이고s붙이기
 
+//obj뒤에 붙이고
 let questions = [
     {
         title: '자고로 스마트폰이란...',
@@ -270,4 +364,43 @@ let questions = [
             }
         }
     }
+];
+
+let plansObj = [
+    {
+        title: '모두다 무제한',
+        data: 10000,
+        call: 10000,
+        price: 101000
+    },
+    {
+        title: '데이터 걱정없는 77',
+        data: 6000,
+        call: 300,
+        price: 77000
+    },
+    {
+        title: '데이터 걱정없는 66',
+        data: 6000,
+        call: 100,
+        price: 66000
+    },
+    {
+        title: '통화 걱정없는 77',
+        data: 4000,
+        call: 300,
+        price: 77000
+    },
+    {
+        title: '통화 걱정없는 66',
+        data: 1000,
+        call: 300,
+        price: 66000
+    },
+    {
+        title: 'LTE 다이렉트',
+        data: 1000,
+        call: 50,
+        price: 66000
+    },
 ];
