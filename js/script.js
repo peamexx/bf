@@ -1,13 +1,17 @@
 // 변수
+let windowWidth = window.innerWidth;
+
 let header = document.querySelector('header');
 let nav = header.querySelector('nav');
 
 let main = document.querySelector('main');
+let visual = document.querySelector('.visual');
 let slider = main.querySelector('.slider');
 let prevBtn = slider.querySelector('.prevBtn');
 let nextBtn = slider.querySelector('.nextBtn');
+let contents = slider.querySelector('.contents');
 let slide = slider.querySelectorAll('.slide');
-let imgWidth = slide[0].querySelector('img').offsetWidth;
+let slideCount = 1;
 
 let quiz = document.querySelector('.quiz');
 let startArea = quiz.querySelector('.startArea');
@@ -24,6 +28,7 @@ let indexCount = 1;
 let answer = [];
 
 
+
 // header > .gnb(메인메뉴) 마우스 오버 ---> .depth 노출/비노출
 nav.addEventListener('mouseover', depthOn);
 nav.addEventListener('mouseout', depthOff);
@@ -31,6 +36,9 @@ nav.addEventListener('mouseout', depthOff);
 // main > .visual > .slider 클릭 ---> 이미지 돌아가기
 prevBtn.addEventListener('click', prevImgSlide);
 nextBtn.addEventListener('click', nextImgSlide);
+
+// .main > .slider 반응형 처리
+window.addEventListener('resize', sliderResize);
 
 // main > .quiz > .quizStartBtn(테스트 시작) 클릭 ---> 퀴즈 시작
 quizStartBtn.addEventListener('click', quizStart);
@@ -51,35 +59,45 @@ function depthOff() {
     nav.querySelectorAll('.depth').forEach((item) => item.classList.remove('on'));
 };
 
-
 function prevImgSlide() {
-    if(slide.length === 1 || parseFloat(getComputedStyle(slide[0]).left) === 0) {
-        return; // 슬라이드 개수가 1개거나, left가 0일 때(첫페이지 일때) 제외
-    } else if(slide.length > 1) {
-        slide.forEach((item) => {
-            let leftNum = parseFloat(getComputedStyle(item).left);
+    let imgWidth = slide[0].querySelector('img').offsetWidth;
 
-            item.style.left = leftNum + imgWidth + 'px';
-        });
-    };
+    if(slideCount === 1) { // 첫 슬라이드일 때
+        return;
+    } else {
+        contents.style.left = (-1 * imgWidth * (slideCount - 2)) + 'px';
+        visual.style.backgroundColor = slideColor[slideCount - 2];
+        slideCount--;
+    }
 };
 
 function nextImgSlide() {
-    if(slide.length === 1) {
-        return;
-    } else if(slide.length > 1) {
-        slide.forEach((item) => {
-            let leftNum = parseFloat(getComputedStyle(item).left);
+    let imgWidth = slide[0].querySelector('img').offsetWidth;
 
-            if(Math.abs(leftNum) === (slide.length - 1) * imgWidth) { // 제일 마지막 슬라이드일 때
-                item.style.left = 0; // 처음으로 돌아가기
-            } else {
-                item.style.left = leftNum - imgWidth + 'px';
-            }
-        });
+    if (slide.length === 1) { // 슬라이드가 1개만 있을 때
+        return;
+    } else if (slide.length > 1) { // 슬라이드가 여러개 있을 때
+        if(slideCount === slide.length) { // 마지막 슬라이드일 때
+            contents.style.left = 0;
+            visual.style.backgroundColor = slideColor[0];
+            slideCount = 1;
+        } else {
+            contents.style.left = (-1 * imgWidth * slideCount) + 'px';
+            visual.style.backgroundColor = slideColor[slideCount];
+            slideCount++;
+        }
     };
 };
 
+function sliderResize() {
+    let windowWidth = window.innerWidth;
+    let imgHeight = slide[0].querySelector('img').offsetHeight;
+
+    if(windowWidth < 1200) {
+        slide.forEach((item) => item.style.width = windowWidth + 'px');
+        visual.style.height = imgHeight + 'px';
+    }
+};
 
 function quizStart() {
     startArea.classList.add('off');
@@ -93,11 +111,11 @@ function questionShow() {
     questionTitle.textContent = questions[indexCount - 1].title;
 
     let keys = [];
-    for(let key in questions[0]) {
+    for (let key in questions[0]) {
         keys.push(key); // ["title", "choice1", "choice2"]
     };
 
-    for(let i=1; i<keys.length; i++) {
+    for (let i = 1; i < keys.length; i++) {
         questionBtn.forEach((item) => {
             item.textContent = questions[indexCount - 1][keys[i]].text;
             keys.splice(keys[i], 1);
@@ -117,15 +135,15 @@ function nextQuestionClicked() {
     let selectedBtn;
 
     questionBtn.forEach((item, index) => {
-        if(item.classList.contains('selected')) {
+        if (item.classList.contains('selected')) {
             selectedBtnCnt++
             selectedBtn = index;
         }
     });
 
-    if(selectedBtnCnt === 0) { // 선택된 버튼이 하나도 없을 때
+    if (selectedBtnCnt === 0) { // 선택된 버튼이 하나도 없을 때
         warning.classList.add('on');
-    } else if(indexCount === 4) { // 마지막 문제일 때
+    } else if (indexCount === 4) { // 마지막 문제일 때
         answer.push(questions[indexCount - 1]['choice' + (selectedBtn + 1)].score);
         yourPhoneIs();
     } else {
@@ -134,12 +152,12 @@ function nextQuestionClicked() {
         warning.classList.remove('on');
         indexCount++;
         questionShow();
-    } 
+    }
 };
 
 function yourPhoneIs() {
-    let keys = []; 
-    for(let key in answer[0]) {
+    let keys = [];
+    for (let key in answer[0]) {
         keys.push(key); // ["galaxy", "iphone", "other"]
     };
 
@@ -152,7 +170,7 @@ function yourPhoneIs() {
 
     let result = []; //없애도 됨
     let _result = [];
-    for(let i=0; i<keys.length; i++) {
+    for (let i = 0; i < keys.length; i++) {
         totalScore.map((argT) => {
             result[keys[i]] = argT; // [galaxy: 2, iphone: 4, other: 5]
             _result.push([keys[i], argT]); // [[galaxy, 2], [iphone, 4], [other, 5]]
@@ -173,8 +191,8 @@ function yourPhoneIs() {
 
 
 // Obejct
-let questions = [
-    {
+let slideColor = ['rgb(0, 0, 0)', 'rgb(249, 205, 57)', 'rgb(255, 255, 255)'];
+let questions = [{
         title: '자고로 스마트폰이란...',
         choice1: {
             text: '편하게 국내 스마트폰이 좋아',
