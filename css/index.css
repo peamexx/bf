@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
@@ -475,6 +476,112 @@ button {
   display: block;
   width: 50%;
   margin: auto;
+}
+
+.wrap main .plan .inner {
+  width: 1200px;
+  padding: 80px;
+  margin: auto;
+}
+
+.wrap main .plan .inner h3 {
+  padding-bottom: 30px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.wrap main .plan .inner .box {
+  width: 780px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.wrap main .plan .inner .box .item p {
+  position: relative;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.wrap main .plan .inner .box .item p .answer {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  top: 3px;
+  border-bottom: 2px solid black;
+}
+
+.wrap main .plan .inner .box .item .area {
+  position: relative;
+  margin-left: 20px;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.wrap main .plan .inner .box .item .area input[type="radio"] {
+  margin-right: 5px;
+  padding: 10px;
+  border: 1px solid black;
+  color: white;
+}
+
+.wrap main .plan .inner .box .item .area input[type="radio"]:checked {
+  background-color: #9009b7;
+}
+
+.wrap main .plan .inner .box .item .area input[type="radio"]:focus {
+  outline: none;
+}
+
+.wrap main .plan .inner .box .item .area label {
+  position: relative;
+  top: -4px;
+}
+
+.wrap main .plan .inner .box .item .area input[type="text"] {
+  position: relative;
+  top: -4px;
+  width: 60px;
+  border: 0;
+  border-bottom: 2px solid black;
+  font-size: 1.2rem;
+}
+
+.wrap main .plan .inner .box .item .area input[type="text"]:focus {
+  outline: none;
+}
+
+.wrap main .plan .inner .box .item .area ul {
+  display: inline-block;
+  position: absolute;
+  top: -6px;
+  right: -65px;
+}
+
+.wrap main .plan .inner .box .item .area ul li {
+  display: none;
+  padding: 9px;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.wrap main .plan .inner .box .item .area ul li:first-child:after {
+  content: '▼';
+  display: block;
+  position: absolute;
+  top: 13px;
+  right: 9px;
+  font-size: 0.8rem;
+}
+
+.wrap main .plan .inner button {
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  padding: 15px 30px;
+  background-color: #9009b7;
+  color: white;
 }
 
 @media screen and (max-width: 1200px) {

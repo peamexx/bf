@@ -339,7 +339,7 @@ button {
             background-color: $gray;
             .inner {
                 width: 800px;
-                padding: 30px;
+                padding: 30px; // 80으로바꾸기
                 margin: auto;
                 overflow: hidden;
                 h3 {
@@ -466,6 +466,104 @@ button {
                             margin: auto;
                         }
                     }
+                }
+            }
+        }
+        .plan {
+            .inner {
+                width: 1200px;
+                padding: 80px;
+                margin: auto;
+                h3 {
+                    padding-bottom: 30px;
+                    text-align: center;
+                    font: {
+                        size: 1.8rem;
+                        weight: bold;
+                    }
+                }
+                .box {
+                    width: 780px;
+                    margin: auto;
+                    margin-top: 50px;
+                    .item {
+                        p {
+                            position: relative;
+                            margin-bottom: 20px;
+                            font: {
+                                size: 1.5rem;
+                                weight: bold;
+                            }
+                            .answer {
+                                display: inline-block;
+                                position: relative;
+                                width: 50px;
+                                top: 3px;
+                                border-bottom: 2px solid $black;
+                            }
+                        }
+                        .area {
+                            position: relative;
+                            margin-left: 20px;
+                            margin-right: 10px;
+                            font-size: 1.2rem;
+                            input[type="radio"] {
+                                margin-right: 5px;
+                                padding: 10px;
+                                border: 1px solid $black;
+                                color: $white;
+                                &:checked {
+                                    background-color: $point;
+                                }
+                                &:focus {
+                                    outline: none;
+                                }
+                            }
+                            label {
+                                position: relative;
+                                top: -4px;
+                            }
+                            input[type="text"] {
+                                position: relative;
+                                top: -4px;
+                                width: 60px;
+                                border: 0;
+                                border-bottom: 2px solid $black;
+                                font-size: 1.2rem;
+                                &:focus {
+                                    outline: none;
+                                }
+                            }
+                            ul {
+                                display: inline-block;
+                                position: absolute;
+                                top: -6px;
+                                right: -65px;
+                                li {
+                                    display: none;
+                                    padding: 9px;
+                                    padding-right: 30px;
+                                    cursor: pointer;
+                                    &:first-child:after {
+                                        content: '▼';
+                                        display: block;
+                                        position: absolute;
+                                        top: 13px;
+                                        right: 9px;
+                                        font-size: 0.8rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                button {
+                    display: block;
+                    margin: auto;
+                    margin-top: 50px;
+                    padding: 15px 30px;
+                    background-color: $point;
+                    color: $white;
                 }
             }
         }
