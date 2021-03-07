@@ -2,10 +2,11 @@
 
 > Javascript를 활용한 스마트폰 정보 사이트.
  
-# 현재 제작중입니다!🧚
-*하단 특징, 사용기술, 상세내용 등은 수시로 업데이트되고있습니다*
-
+ 
 ![bf pc version img](https://user-images.githubusercontent.com/38338103/109740659-f82cbd00-7c0e-11eb-99bc-9786bcafad92.jpg)
+
+![bf mobile version im](https://user-images.githubusercontent.com/38338103/110229922-3ba96300-7f50-11eb-9a98-9c91fb71599b.jpg)
+
 
 [미리보기](https://peamexx.github.io/bf/)
 
@@ -38,7 +39,7 @@ ___
 | 메인  | 사용 기능 |
 | ------------- |:-------------:|
 | header      | 1. 빈칸     |
-| main      | 1. 슬라이드<br /> 2. 새로운 소식을 확인하세요<br /> 3. 내게 어떤 폰이 맞을까?     |
+| main      | 1. 슬라이드<br /> 2. 새로운 소식을 확인하세요<br /> 3. 내게 어떤 폰이 맞을까?<br /> 4.내게 딱 맞는 요금제를 추천해드려요     |
 | footer      | 1. 빈칸 |
 
 ___
@@ -47,9 +48,9 @@ ___
 
 - **접근성**
     - H2 tag: 스크린리더기가 읽을 수 있는 화면 탐색용 텍스트 숨김 처리.
-    - modal div: 팝업 시 스크린리더가 본문 내용 탐색을 멈추고 modal로 포커스를 할 수 있도록 처리.
     - button: 디자인 타입일 경우 type="button" 별도 명시.
     - color css: 저시력 및 색각 이상 이용자를 위해 해시코드 대신 rgb 활용.
+    - input, label: input의 id와 label의 for를 같은 값으로 지정하여 label(텍스트)클릭 시 input선택될 수 있도록 처리.
 
 - **슬라이드**
     - left를 조절하여 3가지 배너 롤링.
@@ -57,6 +58,30 @@ ___
     - *(마지막 페이지 ---> 첫페이지로 돌아감)*
     - 배너가 바뀔 때마다 background-color 동시에 변경.
     - window.addEventListener('resize')를 통해 슬라이드 자체 반응형 처리.
+ ```
+ function sliderResize() {
+    let imgHeight = slideAll[0].querySelector('img').offsetHeight;
+    windowWidth = window.innerWidth;
+
+    if(windowWidth < 1200) {
+        slideAll.forEach((item) => item.style.width = windowWidth + 'px');
+        visual.style.height = imgHeight + 'px';
+    }
+};
+ ```
+    - window.addEventListener('load')를 통해 페이지 접속 시 슬라이드 height 수동 처리.
+ ```
+ function setVisualHeight() {
+    // 처음 화면 접속 시 화면을 움직이지 않는 이상 resize가 되지 않아 height를 못잡음
+    let visualWidth = visual.offsetWidth;
+
+    if(windowWidth < 1200) {
+        slideAll.forEach((item) => item.style.width = visualWidth + 'px'); // visual width만큼 img width 수동 변경
+        let imgHeight = slideAll[0].querySelector('img').offsetHeight; // width가 변경되면서 바뀐 height 기록
+        visual.style.height = imgHeight + 'px';
+    }
+};
+ ```
 
 - **새로운 소식을 확인하세요** 
     - 공지사항, 이벤트 옆 more(+)부분 가상선택자 활용.
@@ -132,9 +157,45 @@ ___
     _result = _result.sort((a, b) => b[1] - a[1]);
 ```                           
 
+- **내게 딱 맞는 요금제를 추천해드려요**
+    - 2개 질문 당 최소 1개 선택지 선택 후, 해당 값에 따라 추천할만한 요금제 노출.
+```
+    boxAll.forEach((item, index) => { // 선택지 2개 선택했는지 체크
+        let radioInputAll = item.querySelectorAll('input[type="radio"]');
+
+        radioInputAll.forEach((item) => {
+            if(item.checked) {
+                count++;
+                if(index === 0) { // 첫번째 질문에 해당하면 dataValue에 value 넣기
+                    dataValue.push(item.value);
+                } else { // 두번째 질문에 해당하면 callValue에 value 넣기
+                    callValue.push(item.value);
+                }
+            };
+        });
+    });
+```
+
+```
+function calculateResult() {
+    let calculateResult = plansObj.filter((item) => {
+        if(dataValue == 10000 || callValue == 10000) { // 무제한 골랐을 때
+            return item.data >= dataValue && item.call >= callValue;
+        } else if(dataValue == 6000 || callValue == 300) { // 보통 골랐을 때
+            return item.data >= 2000 && item.data < 10000 && item.call >= 100 && item.call < 10000; // 무제한 요금제는 제외
+        } else { // 적은거 골랐을 때
+            return item.data < dataValue && item.call < callValue;
+        }
+    });
+
+    showPlanResult(calculateResult); // filter된 데이터를 다음 함수에 전달
+};
+
+```
 ___
 
 ### 추가하고 싶은 기능 👀
 - [X] 아이콘 사용 시 접근성 위한 hidden 텍스트 표시.
 - [X] svg 코드로 아이콘 사용.
 - [X] 한 png파일에서 background-position을 활용하여 아이콘 사용.
+- [ ] 전체메뉴 만들기.
