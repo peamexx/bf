@@ -39,6 +39,7 @@ let dataValue = [];
 let callValue = [];
 
 
+
 // header > .gnb(메인메뉴) 마우스 오버 ---> .depth 노출/비노출
 nav.addEventListener('mouseover', depthOn);
 nav.addEventListener('mouseout', depthOff);
@@ -49,6 +50,8 @@ nextBtn.addEventListener('click', nextImgSlide);
 
 // .main > .slider 반응형 처리
 window.addEventListener('resize', sliderResize);
+// .main > .visual height 수동 처리
+window.addEventListener('load', setVisualHeight);
 
 // .main > .quiz > .quizStartBtn(테스트 시작) 클릭 ---> 퀴즈 시작
 quizStartBtn.addEventListener('click', quizStart);
@@ -61,6 +64,7 @@ nextQuestionBtn.addEventListener('click', nextQuestionClicked);
 planSearchBtn.addEventListener('click', planSearch);
 // .main > .plan > .planResetBtn(테스트 다시하기) ---> 다시 시작
 planResetBtn.addEventListener('click', planReset);
+
 
 
 // 함수
@@ -104,11 +108,21 @@ function nextImgSlide() {
 };
 
 function sliderResize() {
-    let windowWidth = window.innerWidth;
     let imgHeight = slide[0].querySelector('img').offsetHeight;
 
     if(windowWidth < 1200) {
         slide.forEach((item) => item.style.width = windowWidth + 'px');
+        visual.style.height = imgHeight + 'px';
+    }
+};
+
+function setVisualHeight() {
+    // 처음 화면 접속 시 화면을 움직이지 않는 이상 resize가 되지 않아 height를 못잡음
+    let visualWidth = visual.offsetWidth;
+
+    if(windowWidth < 1200) {
+        slide.forEach((item) => item.style.width = visualWidth + 'px'); // visual width만큼 img width 수동 변경
+        let imgHeight = slide[0].querySelector('img').offsetHeight; // width가 변경되면서 바뀐 height 기록
         visual.style.height = imgHeight + 'px';
     }
 };
