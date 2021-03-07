@@ -670,6 +670,41 @@ button {
                     }
                 }
             }
+            .plan {
+                .inner {
+                    width: 100%;
+                    padding: 50px 30px;
+                    h3 {
+                        font-size: 1.5rem;
+                    }
+                    .boxs {
+                        .box {
+                            width: auto;
+                            .item {
+                                p {
+                                    text-align: center;
+                                    font-size: 1.2rem;
+                                }
+                                .areas {
+                                    display: table;
+                                    margin: auto;
+                                }
+                            }
+                        }
+                    }
+                    .result {
+                        p {
+                            font-size: 1.3rem;
+                        }
+                        .recommendPlan {
+                            font-size: 1.4rem;
+                        }
+                        table {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
         }
         @media screen and (max-width: $md) {
             .visual {
@@ -713,6 +748,35 @@ button {
                                     padding: 10px 0;
                                 }
                             }
+                        }
+                    }
+                }
+            }
+            .plan {
+                .inner {
+                    .boxs {
+                        .box {
+                            .item {
+                                .areas {
+                                    display: table;
+                                    margin: auto;
+                                    .area {
+                                        display: block;
+                                        font-size: 1rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .result {
+                        p {
+                            font-size: 1.1rem;
+                        }
+                        .recommendPlan {
+                            font-size: 1.2rem;
+                        }
+                        table {
+                            font-size: 0.9rem;
                         }
                     }
                 }

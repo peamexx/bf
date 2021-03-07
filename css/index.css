@@ -681,6 +681,33 @@ button {
   .wrap main .quiz .inner h3 {
     font-size: 1.5rem;
   }
+  .wrap main .plan .inner {
+    width: 100%;
+    padding: 50px 30px;
+  }
+  .wrap main .plan .inner h3 {
+    font-size: 1.5rem;
+  }
+  .wrap main .plan .inner .boxs .box {
+    width: auto;
+  }
+  .wrap main .plan .inner .boxs .box .item p {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .wrap main .plan .inner .boxs .box .item .areas {
+    display: table;
+    margin: auto;
+  }
+  .wrap main .plan .inner .result p {
+    font-size: 1.3rem;
+  }
+  .wrap main .plan .inner .result .recommendPlan {
+    font-size: 1.4rem;
+  }
+  .wrap main .plan .inner .result table {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (max-width: 770px) {
@@ -702,6 +729,23 @@ button {
   .wrap main .quiz .inner .box .questionArea .selectArea .questionBtn {
     width: 100%;
     padding: 10px 0;
+  }
+  .wrap main .plan .inner .boxs .box .item .areas {
+    display: table;
+    margin: auto;
+  }
+  .wrap main .plan .inner .boxs .box .item .areas .area {
+    display: block;
+    font-size: 1rem;
+  }
+  .wrap main .plan .inner .result p {
+    font-size: 1.1rem;
+  }
+  .wrap main .plan .inner .result .recommendPlan {
+    font-size: 1.2rem;
+  }
+  .wrap main .plan .inner .result table {
+    font-size: 0.9rem;
   }
 }
 
