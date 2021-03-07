@@ -58,7 +58,7 @@ ___
     - *(마지막 페이지 ---> 첫페이지로 돌아감)*
     - 배너가 바뀔 때마다 background-color 동시에 변경.
     - window.addEventListener('resize')를 통해 슬라이드 자체 반응형 처리.
- ```
+~~~
  function sliderResize() {
     let imgHeight = slideAll[0].querySelector('img').offsetHeight;
     windowWidth = window.innerWidth;
@@ -68,9 +68,10 @@ ___
         visual.style.height = imgHeight + 'px';
     }
 };
- ```
-    - window.addEventListener('load')를 통해 페이지 접속 시 슬라이드 height 수동 처리.
- ```
+~~~
+
+   - window.addEventListener('load')를 통해 페이지 접속 시 슬라이드 height 수동 처리.
+~~~
  function setVisualHeight() {
     // 처음 화면 접속 시 화면을 움직이지 않는 이상 resize가 되지 않아 height를 못잡음
     let visualWidth = visual.offsetWidth;
@@ -81,7 +82,7 @@ ___
         visual.style.height = imgHeight + 'px';
     }
 };
- ```
+~~~
 
 - **새로운 소식을 확인하세요** 
     - 공지사항, 이벤트 옆 more(+)부분 가상선택자 활용.
