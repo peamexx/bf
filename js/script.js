@@ -10,7 +10,7 @@ let slider = main.querySelector('.slider');
 let prevBtn = slider.querySelector('.prevBtn');
 let nextBtn = slider.querySelector('.nextBtn');
 let contents = slider.querySelector('.contents');
-let slide = slider.querySelectorAll('.slide');
+let slideAll = slider.querySelectorAll('.slide');
 let slideCount = 1;
 
 let quiz = document.querySelector('.quiz');
@@ -18,10 +18,10 @@ let startArea = quiz.querySelector('.startArea');
 let quizStartBtn = quiz.querySelector('.quizStartBtn');
 let questionArea = quiz.querySelector('.questionArea');
 let questionTitle = quiz.querySelector('.questionTitle');
-let questionBtn = quiz.querySelectorAll('.questionBtn'); // All이라 붙이기
+let questionBtnAll = quiz.querySelectorAll('.questionBtn');
 let index = quiz.querySelector('.index');
 let nextQuestionBtn = quiz.querySelector('.nextQuestionBtn');
-let warning = quiz.querySelector('.warning'); // 앞에 quiz워닝 붙여야함
+let quizWarning = quiz.querySelector('.warning');
 let resultArea = quiz.querySelector('.resultArea');
 let resultPhone = quiz.querySelector('.resultPhone');
 let indexCount = 1;
@@ -55,14 +55,14 @@ window.addEventListener('load', setVisualHeight);
 
 // .main > .quiz > .quizStartBtn(테스트 시작) 클릭 ---> 퀴즈 시작
 quizStartBtn.addEventListener('click', quizStart);
-// .main > .quiz > .questionBtn(선택지) 클릭 ---> 클래스 추가
-questionBtn.forEach((item) => item.addEventListener('click', questionBtnSelected));
+// .main > .quiz > .questionBtnAll(선택지) 클릭 ---> 클래스 추가
+questionBtnAll.forEach((item) => item.addEventListener('click', questionBtnSelected));
 // .main > .quiz > .nextQuestionBtn(다음) 클릭 ---> 다음 퀴즈 노출
 nextQuestionBtn.addEventListener('click', nextQuestionClicked);
 
-// .main > .plan > .planSearchBtn(요금제 확인하기) ---> 결과값 도출
+// .main > .plan > .planSearchBtn(요금제 확인하기) 클릭 ---> 결과값 도출
 planSearchBtn.addEventListener('click', planSearch);
-// .main > .plan > .planResetBtn(테스트 다시하기) ---> 다시 시작
+// .main > .plan > .planResetBtn(테스트 다시하기) 클릭 ---> 다시 시작
 planResetBtn.addEventListener('click', planReset);
 
 
@@ -78,40 +78,41 @@ function depthOff() {
 };
 
 function prevImgSlide() {
-    let imgWidth = slide[0].querySelector('img').offsetWidth;
+    let imgWidth = slideAll[0].querySelector('img').offsetWidth;
 
     if(slideCount === 1) { // 첫 슬라이드일 때
         return;
     } else {
         contents.style.left = (-1 * imgWidth * (slideCount - 2)) + 'px';
-        visual.style.backgroundColor = slideColor[slideCount - 2];
+        visual.style.backgroundColor = slideColorObj[slideCount - 2];
         slideCount--;
     }
 };
 
 function nextImgSlide() {
-    let imgWidth = slide[0].querySelector('img').offsetWidth;
+    let imgWidth = slideAll[0].querySelector('img').offsetWidth;
 
-    if (slide.length === 1) { // 슬라이드가 1개만 있을 때
+    if (slideAll.length === 1) { // 슬라이드가 1개만 있을 때
         return;
-    } else if (slide.length > 1) { // 슬라이드가 여러개 있을 때
-        if(slideCount === slide.length) { // 마지막 슬라이드일 때
+    } else if (slideAll.length > 1) { // 슬라이드가 여러개 있을 때
+        if(slideCount === slideAll.length) { // 마지막 슬라이드일 때
             contents.style.left = 0;
-            visual.style.backgroundColor = slideColor[0];
+            visual.style.backgroundColor = slideColorObj[0];
             slideCount = 1;
         } else {
             contents.style.left = (-1 * imgWidth * slideCount) + 'px';
-            visual.style.backgroundColor = slideColor[slideCount];
+            visual.style.backgroundColor = slideColorObj[slideCount];
             slideCount++;
         }
     };
 };
 
 function sliderResize() {
-    let imgHeight = slide[0].querySelector('img').offsetHeight;
+    let imgHeight = slideAll[0].querySelector('img').offsetHeight;
+    windowWidth = window.innerWidth; // 여기다 선언하거나 다시 할당해줘야 resize할 때마다 매번 갱신됨.
 
     if(windowWidth < 1200) {
-        slide.forEach((item) => item.style.width = windowWidth + 'px');
+        slideAll.forEach((item) => item.style.width = windowWidth + 'px');
         visual.style.height = imgHeight + 'px';
     }
 };
@@ -121,8 +122,8 @@ function setVisualHeight() {
     let visualWidth = visual.offsetWidth;
 
     if(windowWidth < 1200) {
-        slide.forEach((item) => item.style.width = visualWidth + 'px'); // visual width만큼 img width 수동 변경
-        let imgHeight = slide[0].querySelector('img').offsetHeight; // width가 변경되면서 바뀐 height 기록
+        slideAll.forEach((item) => item.style.width = visualWidth + 'px'); // visual width만큼 img width 수동 변경
+        let imgHeight = slideAll[0].querySelector('img').offsetHeight; // width가 변경되면서 바뀐 height 기록
         visual.style.height = imgHeight + 'px';
     }
 };
@@ -131,21 +132,22 @@ function quizStart() {
     startArea.classList.add('off');
     quizStartBtn.classList.add('off');
     questionArea.classList.add('on');
+    resultArea.querySelector('span').classList.remove('on');
     questionShow();
 };
 
 function questionShow() {
     index.textContent = `${indexCount}/4`;
-    questionTitle.textContent = questions[indexCount - 1].title;
+    questionTitle.textContent = questionsObj[indexCount - 1].title;
 
     let keys = [];
-    for (let key in questions[0]) {
+    for (let key in questionsObj[0]) {
         keys.push(key); // ["title", "choice1", "choice2"]
     };
 
     for (let i = 1; i < keys.length; i++) {
-        questionBtn.forEach((item) => {
-            item.textContent = questions[indexCount - 1][keys[i]].text;
+        questionBtnAll.forEach((item) => {
+            item.textContent = questionsObj[indexCount - 1][keys[i]].text;
             keys.splice(keys[i], 1);
         });
     };
@@ -154,7 +156,7 @@ function questionShow() {
 function questionBtnSelected(e) {
     let target = e.target;
 
-    questionBtn.forEach((item) => item.classList.remove('selected'));
+    questionBtnAll.forEach((item) => item.classList.remove('selected'));
     target.classList.add('selected');
 };
 
@@ -162,7 +164,7 @@ function nextQuestionClicked() {
     let selectedBtnCnt = 0;
     let selectedBtn;
 
-    questionBtn.forEach((item, index) => {
+    questionBtnAll.forEach((item, index) => {
         if (item.classList.contains('selected')) {
             selectedBtnCnt++
             selectedBtn = index;
@@ -170,14 +172,14 @@ function nextQuestionClicked() {
     });
 
     if (selectedBtnCnt === 0) { // 선택된 버튼이 하나도 없을 때
-        warning.classList.add('on');
+        quizWarning.classList.add('on');
     } else if (indexCount === 4) { // 마지막 문제일 때
-        answer.push(questions[indexCount - 1]['choice' + (selectedBtn + 1)].score);
+        answer.push(questionsObj[indexCount - 1]['choice' + (selectedBtn + 1)].score);
         yourPhoneIs();
     } else {
-        answer.push(questions[indexCount - 1]['choice' + (selectedBtn + 1)].score);
-        questionBtn.forEach((item) => item.classList.remove('selected'));
-        warning.classList.remove('on');
+        answer.push(questionsObj[indexCount - 1]['choice' + (selectedBtn + 1)].score);
+        questionBtnAll.forEach((item) => item.classList.remove('selected'));
+        quizWarning.classList.remove('on');
         indexCount++;
         questionShow();
     }
@@ -196,7 +198,7 @@ function yourPhoneIs() {
         }, 0));
     });
 
-    let result = []; //없애도 됨
+    let result = [];
     let _result = [];
     for (let i = 0; i < keys.length; i++) {
         totalScore.map((argT) => {
@@ -209,10 +211,13 @@ function yourPhoneIs() {
     _result = _result.sort((a, b) => b[1] - a[1]); // [[other, 5], [iphone, 4], [galaxy, 2]
 
     questionArea.classList.add('off');
-    resultArea.querySelector('span').classList.add('on');
     resultArea.classList.add('on');
+    if(_result[0][0] === 'other') {
+        resultArea.querySelector('span').classList.add('on');
+    };
     resultArea.querySelector('img').setAttribute('src', `./img/${_result[0][0]}01.jpg`);
     console.log(_result);
+    console.log(_result[0][0]);
     resultPhone.textContent = _result[0][0]; // other
 };
 
@@ -269,7 +274,7 @@ function showPlanResult(arg) {
         let td1 = document.createElement('td');
         td1.textContent = item.title;
         let td2 = document.createElement('td');
-        td2.textContent = item.data.toLocaleString(); // gb로 나타내기
+        td2.textContent = (item.data / 1000);
         let td3 = document.createElement('td');
         td3.textContent = item.call.toLocaleString();
         let td4 = document.createElement('td');
@@ -298,10 +303,9 @@ function planReset() {
 
 
 // Obejct
-let slideColor = ['rgb(0, 0, 0)', 'rgb(249, 205, 57)', 'rgb(255, 255, 255)']; //obj뒤에 붙이고s붙이기
+let slideColorObj = ['rgb(0, 0, 0)', 'rgb(249, 205, 57)', 'rgb(255, 255, 255)'];
 
-//obj뒤에 붙이고
-let questions = [
+let questionsObj = [
     {
         title: '자고로 스마트폰이란...',
         choice1: {

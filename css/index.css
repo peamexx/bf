@@ -468,7 +468,7 @@ button {
 }
 
 .wrap main .quiz .inner .box .resultArea span {
-  display: block;
+  display: none;
   text-align: center;
 }
 

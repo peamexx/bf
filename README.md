@@ -66,7 +66,7 @@ ___
     - 4개의 선택지 테스트로 3가지 결과값 출력.
 ```
     // 데이터 형태
-    let questions = [
+    let questionsObj = [
     {
         title: '자고로 스마트폰이란...',
         choice1: {
@@ -92,13 +92,13 @@ ___
 ```
     // '다음'버튼 클릭 시 다음번 질문제목, 선택지 데이터 노출
     let keys = [];
-    for(let key in questions[0]) {
+    for(let key in questionsObj[0]) {
         keys.push(key); // ["title(질문제목)", "choice1(선택지1)", "choice2(선택지2)"]
     };
 
     for(let i=1; i<keys.length; i++) {
-        questionBtn.forEach((item) => {
-            item.textContent = questions[indexCount - 1][keys[i]].text;
+        questionBtnAll.forEach((item) => {
+            item.textContent = questionsObj[indexCount - 1][keys[i]].text;
             keys.splice(keys[i], 1);
         });
     };
