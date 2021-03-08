@@ -347,7 +347,7 @@ button {
             background-color: $gray;
             .inner {
                 width: 800px;
-                padding: 30px; // 80으로바꾸기
+                padding: 80px;
                 margin: auto;
                 overflow: hidden;
                 h3 {
@@ -384,7 +384,7 @@ button {
                             margin-top: 20px;
                             padding: 15px 30px;
                             background-color: $point;
-                            color: $white;
+                            color: $white !important;
                         }
                     }
                     .questionArea {
@@ -606,7 +606,7 @@ button {
                             th:nth-child(3),
                             td:nth-child(1),
                             td:nth-child(2),
-                            td:nth-child(3), {
+                            td:nth-child(3) {
                                 border-right: 1px solid $black;
                             }
                         }
@@ -769,6 +769,7 @@ button {
                         }
                     }
                     .result {
+                        padding: 0;
                         p {
                             font-size: 1.1rem;
                         }
@@ -777,6 +778,12 @@ button {
                         }
                         table {
                             font-size: 0.9rem;
+                            tr {
+                                th,
+                                td {
+                                    padding: 10px;
+                                }
+                            }
                         }
                     }
                 }
