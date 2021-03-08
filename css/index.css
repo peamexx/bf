@@ -467,7 +467,7 @@ button {
   font-weight: bold;
 }
 
-.wrap main .quiz .inner .box .resultArea span {
+.wrap main .quiz .inner .box .resultArea .otherText {
   display: none;
   text-align: center;
 }

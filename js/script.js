@@ -213,7 +213,7 @@ function yourPhoneIs() {
     questionArea.classList.add('off');
     resultArea.classList.add('on');
     if(_result[0][0] === 'other') {
-        resultArea.querySelector('span').classList.add('on');
+        resultArea.querySelector('.otherText').classList.add('on');
     };
     resultArea.querySelector('img').setAttribute('src', `./img/${_result[0][0]}01.jpg`);
     console.log(_result);
