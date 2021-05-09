@@ -58,7 +58,7 @@ ___
     - *(마지막 페이지 ---> 첫페이지로 돌아감)*
     - 배너가 바뀔 때마다 background-color 동시에 변경.
     - window.addEventListener('resize')를 통해 슬라이드 자체 반응형 처리.
-~~~
+~~~ js
  function sliderResize() {
     let imgHeight = slideAll[0].querySelector('img').offsetHeight;
     windowWidth = window.innerWidth;
@@ -71,7 +71,7 @@ ___
 ~~~
 
    - window.addEventListener('load')를 통해 페이지 접속 시 슬라이드 height 수동 처리.
-~~~
+~~~ js
  function setVisualHeight() {
     // 처음 화면 접속 시 화면을 움직이지 않는 이상 resize가 되지 않아 height를 못잡음
     let visualWidth = visual.offsetWidth;
@@ -90,7 +90,7 @@ ___
 
 - **내게 어떤 폰이 맞을까?**
     - 4개의 선택지 테스트로 3가지 결과값 출력.
-```
+``` js
     // 데이터 형태
     let questionsObj = [
     {
@@ -115,7 +115,7 @@ ___
     ...]
 ```
 
-```
+``` js
     // '다음'버튼 클릭 시 다음번 질문제목, 선택지 데이터 노출
     let keys = [];
     for(let key in questionsObj[0]) {
@@ -130,7 +130,7 @@ ___
     };
 ```
 
-```
+``` js
     // 키 값에 해당하는 array 생성 ["galaxy", "iphone", "other"]
     let keys = []; 
     for(let key in answer[0]) {
@@ -160,7 +160,7 @@ ___
 
 - **내게 딱 맞는 요금제를 추천해드려요**
     - 2개 질문 당 최소 1개 선택지 선택 후, 해당 값에 따라 추천할만한 요금제 노출.
-```
+``` js
     boxAll.forEach((item, index) => { // 선택지 2개 선택했는지 체크
         let radioInputAll = item.querySelectorAll('input[type="radio"]');
 
@@ -177,7 +177,7 @@ ___
     });
 ```
 
-```
+``` js
 function calculateResult() {
     let calculateResult = plansObj.filter((item) => {
         if(dataValue == 10000 || callValue == 10000) { // 무제한 골랐을 때
